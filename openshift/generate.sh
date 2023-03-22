@@ -8,6 +8,8 @@ generate \
   --root-dir "${repo_root_dir}" \
   --generators dockerfile \
   --excludes "vendor.*" \
-  --excludes "third_party.*"
+  --excludes "third_party.*" \
+  --images-from eventing \
+  --images-from eventing-kafka-broker
 
 "$repo_root_dir/hack/update-codegen.sh"
