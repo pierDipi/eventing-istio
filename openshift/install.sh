@@ -9,7 +9,7 @@ function install_eventing_with_mesh() {
     export ON_CLUSTER_BUILDS=true
     export DOCKER_REPO_OVERRIDE=image-registry.openshift-image-registry.svc:5000/openshift-marketplace
 
-    make OPENSHIFT_CI="true" TRACING_BACKEND=zipkin install-strimzi install-kafka-with-mesh || return $?
+    make OPENSHIFT_CI="true" SCALE_UP=5 TRACING_BACKEND=zipkin images install-strimzi install-kafka-with-mesh || return $?
 
     popd || return $?
 }

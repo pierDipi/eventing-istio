@@ -26,6 +26,7 @@ function run_eventing_core_tests() {
     -run TestPingSource \
     ./test/rekt/ \
      --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
   BROKER_TEMPLATES="${KAFKA_BROKER_TEMPLATES}" go_test_e2e \
@@ -34,6 +35,7 @@ function run_eventing_core_tests() {
     -run TestBrokerConformance \
     ./test/rekt/ \
      --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
   BROKER_TEMPLATES="${KAFKA_NAMESPACED_BROKER_TEMPLATES}" go_test_e2e \
@@ -42,6 +44,7 @@ function run_eventing_core_tests() {
     -run TestBrokerConformance \
     ./test/rekt/ \
      --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
   BROKER_TEMPLATES="${KAFKA_BROKER_TEMPLATES}" go_test_e2e \
@@ -50,6 +53,7 @@ function run_eventing_core_tests() {
     -run TestContainerSource \
     ./test/rekt/ \
      --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
   BROKER_TEMPLATES="${KAFKA_BROKER_TEMPLATES}" go_test_e2e \
@@ -58,6 +62,7 @@ function run_eventing_core_tests() {
     -run TestSinkBinding \
     ./test/rekt/ \
      --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
   popd
@@ -72,6 +77,7 @@ function run_eventing_kafka_broker_tests() {
     -run TestKafkaSource \
     ./test/e2e_new/... \
      --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
   BROKER_TEMPLATES="${KAFKA_BROKER_TEMPLATES}" BROKER_CLASS="Kafka" go_test_e2e \
@@ -80,6 +86,7 @@ function run_eventing_kafka_broker_tests() {
     -run TestKafkaSink \
     ./test/e2e_new/... \
      --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
   popd
