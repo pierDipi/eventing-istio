@@ -1,3 +1,4 @@
+knative.dev/eventing-istio/cmd/controller: registry.ci.openshift.org/openshift/knative-eventing-istio-controller:knative-v1.8
 knative.dev/eventing-kafka-broker/control-plane/cmd/kafka-controller: registry.ci.openshift.org/openshift/knative-eventing-kafka-broker-kafka-controller:knative-v1.8
 knative.dev/eventing-kafka-broker/control-plane/cmd/post-install: registry.ci.openshift.org/openshift/knative-eventing-kafka-broker-post-install:knative-v1.8
 knative.dev/eventing-kafka-broker/control-plane/cmd/webhook-kafka: registry.ci.openshift.org/openshift/knative-eventing-kafka-broker-webhook-kafka:knative-v1.8
