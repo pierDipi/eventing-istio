@@ -15,6 +15,9 @@ source "${REPO_ROOT_DIR}"/vendor/knative.dev/hack/e2e-tests.sh
 function knative_setup() {
   git submodule update --init --recursive
   "${REPO_ROOT_DIR}"/hack/install-dependencies.sh || return $?
+  "${REPO_ROOT_DIR}"/hack/install.sh || return $?
+
+  wait_until_pods_running "knative-eventing" || return $?
 }
 
 function run_eventing_core_tests() {
@@ -63,6 +66,24 @@ function run_eventing_core_tests() {
     ./test/rekt/ \
      --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
      --environment.namespace="serverless-tests" \
+    --istio.enabled=true || return $?
+
+  CHANNEL_GROUP_KIND="InMemoryChannel.messaging.knative.dev" \
+  CHANNEL_VERSION="v1" \
+  go_test_e2e \
+    -timeout=1h \
+    -parallel=18 \
+    -run TestChannel \
+    ./test/rekt/ \
+    --istio.enabled=true || return $?
+
+  CHANNEL_GROUP_KIND="KafkaChannel.messaging.knative.dev" \
+  CHANNEL_VERSION="v1beta1" \
+  go_test_e2e \
+    -timeout=1h \
+    -parallel=18 \
+    -run TestChannel \
+    ./test/rekt/ \
     --istio.enabled=true || return $?
 
   popd
