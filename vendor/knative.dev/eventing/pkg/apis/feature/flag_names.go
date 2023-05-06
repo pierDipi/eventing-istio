@@ -17,10 +17,9 @@ limitations under the License.
 package feature
 
 const (
-	KReferenceGroup     = "kreference-group"
-	DeliveryRetryAfter  = "delivery-retryafter"
-	DeliveryTimeout     = "delivery-timeout"
-	KReferenceMapping   = "kreference-mapping"
-	NewTriggerFilters   = "new-trigger-filters"
-	TransportEncryption = "transport-encryption"
+	KReferenceGroup    = "kreference-group"
+	DeliveryRetryAfter = "delivery-retryafter"
+	DeliveryTimeout    = "delivery-timeout"
+	KReferenceMapping  = "kreference-mapping"
+	NewTriggerFilters  = "new-trigger-filters"
 )
