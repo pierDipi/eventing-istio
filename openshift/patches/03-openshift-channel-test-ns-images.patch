@@ -1,0 +1,22 @@
+diff --git a/test/e2e-common.sh b/test/e2e-common.sh
+index afef6f1..d690543 100755
+--- a/test/e2e-common.sh
++++ b/test/e2e-common.sh
+@@ -75,6 +75,8 @@ function run_eventing_core_tests() {
+     -parallel=18 \
+     -run TestChannel \
+     ./test/rekt/ \
++     --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
++     --environment.namespace="serverless-tests" \
+     --istio.enabled=true || return $?
+ 
+   CHANNEL_GROUP_KIND="KafkaChannel.messaging.knative.dev" \
+@@ -84,6 +86,8 @@ function run_eventing_core_tests() {
+     -parallel=18 \
+     -run TestChannel \
+     ./test/rekt/ \
++     --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
++     --environment.namespace="serverless-tests" \
+     --istio.enabled=true || return $?
+ 
+   popd
