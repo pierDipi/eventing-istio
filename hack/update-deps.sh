@@ -25,21 +25,29 @@ upgrade=$(echo $@ | grep '\-\-upgrade' || echo "")
 upgrade_artifacts=${UPGRADE_ARTIFACTS:-""}
 
 function fetch_submodule() {
-  echo "Pulling branch main for submodule $(pwd)"
   branch=${1}
-  git fetch origin -u "${branch}":"${branch}" || return $?
-  git merge "origin/${branch}" || return $?
+  module=${2}
+  echo "Pulling branch ${branch} for submodule ${module}"
+
+  pushd "${module}"
+  git fetch origin "${branch}:${branch}"
+  popd
+
+  git submodule set-branch -b "${branch}" "${module}"
+  git submodule sync
+  git submodule update --init --recursive --remote
 }
 
 function update_submodule() {
+  module=${1}
 
   if [ "${version}" = "" ] || [ "${version}" = "v9000.1" ]; then
     if [ "${upgrade}" != "" ]; then
-      fetch_submodule "main" || return $?
+      fetch_submodule "main" "${module}" || return $?
     fi
   else
     major_minor=${version:1} # Remove 'v' prefix
-    fetch_submodule "release-${major_minor}" || return $?
+    fetch_submodule "release-${major_minor}" "${module}" || return $?
   fi
 
 }
@@ -51,13 +59,8 @@ function fetch_artifacts() {
 }
 
 function update_submodules() {
-  pushd $(dirname "$0")/../third_party/eventing
-  update_submodule
-  popd
-
-  pushd $(dirname "$0")/../third_party/eventing-kafka-broker
-  update_submodule
-  popd
+  update_submodule "third_party/eventing"
+  update_submodule "third_party/eventing-kafka-broker"
 }
 
 git submodule update --init --recursive
