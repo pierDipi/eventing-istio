@@ -1,7 +1,7 @@
 [submodule "third_party/eventing"]
 	path = third_party/eventing
-	url = https://github.com/knative/eventing.git
-	branch = release-1.10
+	url = https://github.com/openshift-knative/eventing.git
+	branch = release-v1.10
 [submodule "third_party/eventing-kafka-broker"]
 	path = third_party/eventing-kafka-broker
 	url = https://github.com/knative-sandbox/eventing-kafka-broker.git

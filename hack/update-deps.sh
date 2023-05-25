@@ -34,7 +34,7 @@ function fetch_submodule() {
   popd
 
   git submodule set-branch -b "${branch}" "${module}"
-  git submodule sync
+  git submodule sync --recursive
   git submodule update --init --recursive --remote
 }
 
@@ -45,6 +45,8 @@ function update_submodule() {
     if [ "${upgrade}" != "" ]; then
       fetch_submodule "main" "${module}" || return $?
     fi
+    git submodule sync --recursive
+    git submodule update --init --recursive --remote
   else
     major_minor=${version:1} # Remove 'v' prefix
     fetch_submodule "release-${major_minor}" "${module}" || return $?
