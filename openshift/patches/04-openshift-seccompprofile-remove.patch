@@ -1,0 +1,13 @@
+diff --git a/config/eventing-istio/controller/500-controller.yaml b/config/eventing-istio/controller/500-controller.yaml
+index 0727ed0..3febd3b 100644
+--- a/config/eventing-istio/controller/500-controller.yaml
++++ b/config/eventing-istio/controller/500-controller.yaml
+@@ -81,8 +81,6 @@ spec:
+           capabilities:
+             drop:
+             - ALL
+-          seccompProfile:
+-            type: RuntimeDefault
+ 
+         livenessProbe:
+           httpGet:
