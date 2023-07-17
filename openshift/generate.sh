@@ -31,7 +31,7 @@ function resolve_resources(){
 
 GO111MODULE=off go get -u github.com/openshift-knative/hack/cmd/generate
 
-generate \
+$(go env GOPATH)/bin/generate \
   --root-dir "${repo_root_dir}" \
   --generators dockerfile \
   --excludes "vendor.*" \
