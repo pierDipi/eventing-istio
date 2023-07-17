@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 repo_root_dir=$(dirname "$(realpath "${BASH_SOURCE[0]}")")/..
 
 release=$(yq r openshift/project.yaml project.tag)
