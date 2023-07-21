@@ -19,7 +19,7 @@ git commit -sm ":fire: remove unneeded workflows" .github/
 git fetch openshift main
 git checkout openshift/main -- openshift OWNERS Makefile
 
-tag=${release/release-/}
+tag=${target/release-/}
 yq write --inplace openshift/project.yaml project.tag "knative-$tag"
 
 # Generate our OCP artifacts
