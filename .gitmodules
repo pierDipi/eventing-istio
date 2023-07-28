@@ -4,5 +4,5 @@
 	branch = release-v1.10
 [submodule "third_party/eventing-kafka-broker"]
 	path = third_party/eventing-kafka-broker
-	url = https://github.com/knative-sandbox/eventing-kafka-broker.git
-	branch = release-1.10
+	url = https://github.com/openshift-knative/eventing-kafka-broker.git
+	branch = release-v1.10
