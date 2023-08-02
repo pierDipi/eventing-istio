@@ -3,4 +3,4 @@
 	url = https://github.com/knative/eventing.git
 [submodule "third_party/eventing-kafka-broker"]
 	path = third_party/eventing-kafka-broker
-	url = https://github.com/knative-sandbox/eventing-kafka-broker.git
+	url = https://github.com/knative-extensions/eventing-kafka-broker.git
