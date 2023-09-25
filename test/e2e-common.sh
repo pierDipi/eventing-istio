@@ -68,6 +68,15 @@ function run_eventing_core_tests() {
      --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
+  go_test_e2e \
+    -timeout=1h \
+    -parallel=12 \
+    -run TestApiServerSource \
+    ./test/rekt/ \
+     --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
+    --istio.enabled=true || return $?
+
   CHANNEL_GROUP_KIND="InMemoryChannel.messaging.knative.dev" \
   CHANNEL_VERSION="v1" \
   go_test_e2e \
