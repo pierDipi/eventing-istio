@@ -28,6 +28,8 @@ function run_eventing_core_tests() {
     -parallel=12 \
     -run TestPingSource \
     ./test/rekt/ \
+     --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
   BROKER_TEMPLATES="${KAFKA_BROKER_TEMPLATES}" go_test_e2e \
@@ -35,6 +37,8 @@ function run_eventing_core_tests() {
     -parallel=12 \
     -run TestBrokerConformance \
     ./test/rekt/ \
+     --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
   BROKER_TEMPLATES="${KAFKA_NAMESPACED_BROKER_TEMPLATES}" go_test_e2e \
@@ -42,6 +46,8 @@ function run_eventing_core_tests() {
     -parallel=12 \
     -run TestBrokerConformance \
     ./test/rekt/ \
+     --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
   BROKER_TEMPLATES="${KAFKA_BROKER_TEMPLATES}" go_test_e2e \
@@ -49,6 +55,8 @@ function run_eventing_core_tests() {
     -parallel=12 \
     -run TestContainerSource \
     ./test/rekt/ \
+     --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
   BROKER_TEMPLATES="${KAFKA_BROKER_TEMPLATES}" go_test_e2e \
@@ -56,9 +64,11 @@ function run_eventing_core_tests() {
     -parallel=12 \
     -run TestSinkBinding \
     ./test/rekt/ \
+     --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
-  go_test_e2e \
+  BROKER_TEMPLATES="${KAFKA_BROKER_TEMPLATES}" go_test_e2e \
     -timeout=1h \
     -parallel=12 \
     -run TestApiServerSource \
@@ -67,6 +77,7 @@ function run_eventing_core_tests() {
      --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
+
   CHANNEL_GROUP_KIND="InMemoryChannel.messaging.knative.dev" \
   CHANNEL_VERSION="v1" \
   go_test_e2e \
@@ -74,6 +85,8 @@ function run_eventing_core_tests() {
     -parallel=18 \
     -run TestChannel \
     ./test/rekt/ \
+     --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
   CHANNEL_GROUP_KIND="KafkaChannel.messaging.knative.dev" \
@@ -83,6 +96,8 @@ function run_eventing_core_tests() {
     -parallel=18 \
     -run TestChannel \
     ./test/rekt/ \
+     --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
   popd
@@ -96,6 +111,8 @@ function run_eventing_kafka_broker_tests() {
     -parallel=12 \
     -run TestKafkaSource \
     ./test/e2e_new/... \
+     --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
   BROKER_TEMPLATES="${KAFKA_BROKER_TEMPLATES}" BROKER_CLASS="Kafka" go_test_e2e \
@@ -103,6 +120,8 @@ function run_eventing_kafka_broker_tests() {
     -parallel=12 \
     -run TestKafkaSink \
     ./test/e2e_new/... \
+     --images.producer.file="${REPO_ROOT_DIR}/openshift/images.yaml" \
+     --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
   popd
