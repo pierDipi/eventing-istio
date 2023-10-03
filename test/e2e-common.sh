@@ -68,7 +68,7 @@ function run_eventing_core_tests() {
      --environment.namespace="serverless-tests" \
     --istio.enabled=true || return $?
 
-  go_test_e2e \
+  BROKER_TEMPLATES="${KAFKA_BROKER_TEMPLATES}" go_test_e2e \
     -timeout=1h \
     -parallel=12 \
     -run TestApiServerSource \
