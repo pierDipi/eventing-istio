@@ -25,5 +25,5 @@ yq write --inplace openshift/project.yaml project.tag "knative-$tag"
 # Generate our OCP artifacts
 make generate
 git apply openshift/patches/*
-git add openshift OWNERS Makefile
+git add .
 git commit -m "Add openshift specific files."
