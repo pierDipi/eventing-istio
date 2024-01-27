@@ -1,0 +1,12 @@
+diff --git a/test/rekt/pingsource_test.go b/test/rekt/pingsource_test.go
+index 67210479f..285ff9f97 100644
+--- a/test/rekt/pingsource_test.go
++++ b/test/rekt/pingsource_test.go
+@@ -91,6 +91,7 @@ func TestPingSourceWithCloudEventData(t *testing.T) {
+ }
+ 
+ func TestPingSourceWithSecondsInSchedule(t *testing.T) {
++	t.Skip("Skip, while SO deploys a eventing release, which does not support PingSource with seconds in schedule")
+ 	t.Parallel()
+ 
+ 	ctx, env := global.Environment(
