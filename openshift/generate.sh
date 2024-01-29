@@ -39,7 +39,8 @@ $(go env GOPATH)/bin/generate \
   --excludes "vendor.*" \
   --excludes "third_party.*" \
   --images-from eventing \
-  --images-from eventing-kafka-broker
+  --images-from eventing-kafka-broker \
+  --dockerfile-image-builder-fmt "registry.ci.openshift.org/openshift/release:rhel-8-release-golang-%s-openshift-4.16"
 
 "$repo_root_dir/hack/update-codegen.sh"
 
