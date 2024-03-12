@@ -18,7 +18,7 @@ git checkout upstream/main -B ${REPO_BRANCH}
 
 # Update openshift's main and take all needed files from there.
 git fetch openshift main
-git checkout openshift/main openshift OWNERS Makefile
+git checkout openshift/main openshift OWNERS OWNERS_ALIASES Makefile
 
 # Generate our OCP artifacts
 make generate
