@@ -17,6 +17,8 @@ function install_eventing_with_mesh() {
     USE_IMAGE_RELEASE_TAG="$(yq r "${SCRIPT_DIR}/project.yaml" project.tag)"
     export USE_IMAGE_RELEASE_TAG
 
+    export GOPATH=/tmp/go
+
     local operator_dir=/tmp/serverless-operator
     git clone --branch "${so_branch}" https://github.com/openshift-knative/serverless-operator.git $operator_dir || git clone --branch main https://github.com/openshift-knative/serverless-operator.git $operator_dir
 
