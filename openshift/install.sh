@@ -4,6 +4,8 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 function install_eventing_with_mesh() {
 
+    export GOPATH=/tmp/go
+
     KNATIVE_EVENTING_ISTIO_MANIFESTS_DIR="${SCRIPT_DIR}/release/artifacts"
     export KNATIVE_EVENTING_ISTIO_MANIFESTS_DIR
 
