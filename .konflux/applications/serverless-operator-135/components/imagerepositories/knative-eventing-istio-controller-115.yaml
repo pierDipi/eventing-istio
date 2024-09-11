@@ -5,8 +5,8 @@ metadata:
     image-controller.appstudio.redhat.com/update-component-image: "true"
   labels:
     appstudio.redhat.com/application: serverless-operator-release-135
-    appstudio.redhat.com/component: knative-eventing-istio-controller-release-v115
-  name: knative-eventing-istio-controller-release-v115
+    appstudio.redhat.com/component: knative-eventing-istio-controller-115
+  name: knative-eventing-istio-controller-115
 spec:
   image:
     name: serverless-operator-release-135/knative-eventing-istio-controller
