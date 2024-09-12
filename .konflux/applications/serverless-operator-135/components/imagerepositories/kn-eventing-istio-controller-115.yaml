@@ -9,5 +9,5 @@ metadata:
   name: kn-eventing-istio-controller-115
 spec:
   image:
-    name: serverless-operator-135/knative-eventing-istio-controller
+    name: serverless-operator-135/kn-eventing-istio-controller
     visibility: public
