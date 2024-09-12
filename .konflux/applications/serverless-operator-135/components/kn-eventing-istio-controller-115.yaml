@@ -3,11 +3,16 @@ kind: Component
 metadata:
   annotations:
     build.appstudio.openshift.io/pipeline: '{"name":"docker-build","bundle":"latest"}'
-  name: knative-eventing-istio-controller-115
+  name: kn-eventing-istio-controller-115
 spec:
-  componentName: knative-eventing-istio-controller-115
+  componentName: kn-eventing-istio-controller-115
   application: serverless-operator-135
    
+  build-nudges-ref:
+    
+    - "serverless-bundle-135"
+    
+  
   source:
     git:
       url: https://github.com/openshift-knative/eventing-istio.git
