@@ -28,6 +28,6 @@ LABEL \
       description="Red Hat OpenShift Serverless 1 Eventing Istio Controller" \
       io.k8s.display-name="Red Hat OpenShift Serverless 1 Eventing Istio Controller" \
       io.k8s.description="Red Hat OpenShift Serverless Eventing Istio Controller" \
-      io.openshift.tags=Controller
+      io.openshift.tags="controller"
 
 ENTRYPOINT ["/usr/bin/controller"]
