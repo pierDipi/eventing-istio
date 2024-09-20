@@ -22,6 +22,13 @@ git checkout openshift/main -- openshift OWNERS OWNERS_ALIASES Makefile
 tag=${target/release-/}
 yq write --inplace openshift/project.yaml project.tag "knative-$tag"
 
+# Update submodules to point to midstream repos with correct branch
+git submodule set-branch --branch "$target" -- "third_party/eventing"
+git submodule set-url -- "third_party/eventing" https://github.com/openshift-knative/eventing.git
+
+git submodule set-branch --branch "$target" -- "third_party/eventing-kafka-broker"
+git submodule set-url -- "third_party/eventing-kafka-broker" https://github.com/openshift-knative/eventing-kafka-broker.git
+
 # Generate our OCP artifacts
 make generate
 git apply openshift/patches/*
